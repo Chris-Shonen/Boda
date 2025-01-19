@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Recuerdo de Nuestra Boda</title>
+    <style>
+        /* Estilos globales */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f9c9e4, #ffffff); /* Fondo degradado rosado */
+            color: #333;
+        }
+
+        /* Fondo rosado y diseño */
+        header {
+            background-color: #f3a0c3; /* Rosado suave */
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-family: 'Georgia', serif;
+            padding: 10px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* Carrusel */
+        .carousel {
+            position: relative;
+            max-width: 1000px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 2em;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        /* Estilos para las fotos panorámicas */
+        .panoramic-images {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .panoramic-images img {
+            max-width: 90%; /* Hacemos que las imágenes panorámicas no se desborden */
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        /* Estilos para el pie de página */
+        footer {
+            background-color: #4e4e50; /* Plomo */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.2em;
+        }
+
+        /* Diseño responsivo */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+                padding: 15px;
+            }
+
+            footer {
+                font-size: 1em;
+            }
+
+            .panoramic-images img {
+                max-width: 100%; /* Aseguramos que las imágenes panorámicas ocupen todo el ancho en pantallas medianas */
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+                padding: 10px;
+            }
+
+            footer {
+                font-size: 0.9em;
+            }
+
+            .panoramic-images img {
+                max-width: 100%; /* Aseguramos que las imágenes panorámicas no se desborden en pantallas pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Recuerdo de Nuestra Boda</h1>
+    </header>
+
+    <!-- Carrusel -->
+    <div class="carousel">
+        <img src="1.jpg" alt="Foto de la boda">
+        <img src="2.jpg" alt="Foto de la boda" style="display: none;">
+        <img src="3.jpg" alt="Foto de la boda" style="display: none;">
+        <img src="4.jpg" alt="Foto de la boda" style="display: none;">
+        <img src="5.jpg" alt="Foto de la boda" style="display: none;">
+        <img src="6.jpg" alt="Foto de la boda" style="display: none;">
+        <img src="7.jpg" alt="Foto de la boda" style="display: none;">
+        <img src="8.jpg" alt="Foto de la boda" style="display: none;">
+        <img src="9.jpg" alt="Foto de la boda" style="display: none;">
+        <img src="10.jpg" alt="Foto de la boda" style="display: none;">
+        <img src="11.jpg" alt="Foto de la boda" style="display: none;">      
+        <img src="12.jpg" alt="Foto de la boda" style="display: none;">
+        <img src="13.jpg" alt="Foto de la boda" style="display: none;">
+        <img src="14.jpg" alt="Foto de la boda" style="display: none;">
+        <img src="15.jpg" alt="Foto de la boda" style="display: none;">
+        <!-- Botones de navegación -->
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </div>
+
+    <!-- Imágenes panorámicas debajo del carrusel -->
+    <div class="panoramic-images">
+        <img src="pano.JPG" alt="Foto panorámica 1">
+        <img src="pano1.JPG" alt="Foto panorámica 2">
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Un momento único, para siempre en nuestros corazones.</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel img');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+
+        function showImage(index) {
+            images.forEach((image, i) => {
+                image.style.display = i === index ? 'block' : 'none';
+            });
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        }
+
+        // Inicializa el carrusel
+        showImage(currentIndex);
+
+        // Event listeners para los botones de navegación
+        nextButton.addEventListener('click', nextImage);
+        prevButton.addEventListener('click', prevImage);
+    </script>
+
+</body>
+</html>
